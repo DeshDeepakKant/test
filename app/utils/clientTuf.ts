@@ -116,18 +116,18 @@ export async function compareRootVersionsClient(
                 new: newRoot.signed.version
             },
             keys: {
-                added: [],
-                removed: [],
-                modified: []
+                added: [] as string[],
+                removed: [] as string[],
+                modified: [] as string[]
             },
             roles: {
-                added: [],
-                removed: [],
-                modified: []
+                added: [] as string[],
+                removed: [] as string[],
+                modified: [] as string[]
             },
             signatures: {
-                added: [],
-                removed: []
+                added: [] as any[],
+                removed: [] as any[]
             }
         };
 
