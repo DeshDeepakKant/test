@@ -1,5 +1,3 @@
-'use server';
-
 import { getAvailableRootVersions, loadRootByVersion } from './utils/loadTufData';
 import { compareRootMetadata } from './utils/diffUtils';
 import { RootDiff } from './utils/types';

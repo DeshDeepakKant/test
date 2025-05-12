@@ -1,5 +1,3 @@
-'use server';
-
 import { createTufRepository } from './tufClient';
 import { RoleInfo } from './types';
 import fs from 'fs';
