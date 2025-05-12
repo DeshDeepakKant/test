@@ -177,7 +177,7 @@ export async function compareRootVersionsClient(
 
         // Find added signatures
         for (const newSig of newSigs) {
-            if (!oldSigs.some(oldSig => 
+            if (!oldSigs.some((oldSig: { keyid: string; sig: string }) => 
                 oldSig.keyid === newSig.keyid && 
                 oldSig.sig === newSig.sig
             )) {
@@ -187,7 +187,7 @@ export async function compareRootVersionsClient(
 
         // Find removed signatures
         for (const oldSig of oldSigs) {
-            if (!newSigs.some(newSig => 
+            if (!newSigs.some((newSig: { keyid: string; sig: string }) => 
                 newSig.keyid === oldSig.keyid && 
                 newSig.sig === oldSig.sig
             )) {
