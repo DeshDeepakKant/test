@@ -6,7 +6,7 @@ import RepoInfo from './RepoInfo';
 import RootVersionSelector from './RootVersionSelector';
 import { RoleInfo } from '../utils/types';
 import styled from 'styled-components';
-import { loadTufDataAction } from '../actions';
+import { loadTufDataClient } from '../utils/clientActions';
 import TufTreeViews from './TufTreeViews';
 
 // Styled components
@@ -47,7 +47,7 @@ export default function TufViewerClient({
         setError(null);
         
         try {
-            const result = await loadTufDataAction(url);
+            const result = await loadTufDataClient(url);
             if (result.error) {
                 setError(result.error);
             } else {
