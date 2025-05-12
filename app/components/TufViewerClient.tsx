@@ -41,6 +41,23 @@ export default function TufViewerClient({
     const [loading, setLoading] = useState(false);
     const [showTreeViews, setShowTreeViews] = useState(false);
     
+    // Check for URL parameters on client side
+    useEffect(() => {
+        const checkUrlParams = () => {
+            // For static export, we need to handle URL parameters on the client side
+            if (typeof window !== 'undefined') {
+                const urlParams = new URLSearchParams(window.location.search);
+                const urlParam = urlParams.get('url');
+                
+                if (urlParam && !remoteUrl) {
+                    handleRemoteUrlChange(urlParam);
+                }
+            }
+        };
+        
+        checkUrlParams();
+    }, []);
+    
     // Handle remote URL changes
     const handleRemoteUrlChange = async (url: string) => {
         setLoading(true);
@@ -53,6 +70,14 @@ export default function TufViewerClient({
             } else {
                 setRoles(result.roles);
                 setRemoteUrl(url);
+                
+                // Update URL with the remote URL parameter
+                if (typeof window !== 'undefined') {
+                    const urlParams = new URLSearchParams(window.location.search);
+                    urlParams.set('url', url);
+                    const newRelativePathQuery = window.location.pathname + '?' + urlParams.toString();
+                    history.pushState(null, '', newRelativePathQuery);
+                }
             }
         } catch (err) {
             setError(`Failed to load data from ${url}: ${err instanceof Error ? err.message : String(err)}`);
