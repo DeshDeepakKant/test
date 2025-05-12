@@ -1,5 +1,11 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+    output: 'export',
+    images: {
+        unoptimized: true,
+    },
+    basePath: process.env.NODE_ENV === 'production' ? '/test' : '',
+    assetPrefix: process.env.NODE_ENV === 'production' ? '/test/' : '',
     reactStrictMode: true,
     compiler: {
         styledComponents: true,
@@ -14,13 +20,7 @@ const nextConfig = {
             https: false
         };
         return config;
-    },
-    output: 'export',
-    images: {
-        unoptimized: true,
-    },
-    basePath: process.env.NODE_ENV === 'production' ? '/test' : '',
-    assetPrefix: process.env.NODE_ENV === 'production' ? '/test/' : '',
+    }
 }
 
 module.exports = nextConfig 
