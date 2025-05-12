@@ -44,7 +44,13 @@ const nextConfig = {
                 },
             ],
         }
-    }
+    },
+    output: 'export',
+    images: {
+        unoptimized: true,
+    },
+    basePath: process.env.NODE_ENV === 'production' ? '/test' : '',
+    assetPrefix: process.env.NODE_ENV === 'production' ? '/test/' : '',
 }
 
 module.exports = nextConfig 
