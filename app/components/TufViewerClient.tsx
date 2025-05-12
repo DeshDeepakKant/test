@@ -6,7 +6,7 @@ import RepoInfo from './RepoInfo';
 import RootVersionSelector from './RootVersionSelector';
 import { RoleInfo } from '../utils/types';
 import styled from 'styled-components';
-import { loadTufDataClient } from '../utils/clientActions';
+import { loadTufDataClient } from '../utils/clientTuf';
 import TufTreeViews from './TufTreeViews';
 
 // Styled components
